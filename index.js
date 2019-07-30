@@ -454,14 +454,14 @@ function updateBackground() {
 //const audio = new Audio('https://github.com/yadPe/yadpe.github.io/raw/visualizer/src/assets/marigold.mp3')
 
 let isInit = false
+const audio = ap.audio;
+audio.crossOrigin = "anonymous"
 
 // init
 const init = () => {
   console.log('aa')
   if (isInit) return
   //ap.audio.crossOrigin = 'anonymous'
-  const audio = ap.audio;
-  audio.crossOrigin = "anonymous"
   if (!audio.paused) {
     if (window.audioCtx == undefined) {
       const audioContext =
