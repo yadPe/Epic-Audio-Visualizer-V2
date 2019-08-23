@@ -27,6 +27,18 @@
     </div>
   </div>
 
+  <div id="vidtop-content">
+    <div class="vid-info">
+      <h1>Try to move your cursor over the spectrum</h1>
+      <p>Audio visualization using the canvas API, a Web Worker, the AudioContext
+        API, some sprite batching technics and APLayer for the player.
+        <p>Two canvas tags are used to render the image, the first one is controlled by the main process that is in
+          charge of playing the audio and applying effect in real time on it, while animating the spectrum. The second
+          one is controlled by a web worker and only takes care of the particles effect, it can animate up to 3000
+          particles using sprite batching, limiting the amount of gpu calls per frame.
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
   <script type="text/js-worker">
     const randomNum = (min, max) => Math.random() * (max - min) + min;
@@ -126,11 +138,11 @@
     }
     
     const render = () => {
-      // ... some drawing using the gl context ...
+      // drawing 
     
       particlesToAnimate = particles.length;
     
-      if (particlesToAnimate > 2000) {
+      if (particlesToAnimate > 2500) {
         particles.shift();
         particlesToAnimate = particles.length;
       }
@@ -144,7 +156,7 @@
     
       // iterate over the opbects
       for (let nObject = 0; nObject < particlesToAnimate; nObject++) {
-        // for ref the entity
+
         const entity = particles[nObject];
     
         entity.x += (entity.dx * entity.speed) * speedRatio;

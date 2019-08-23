@@ -4,7 +4,7 @@ const ap = new APlayer({
   autoplay: false,
   theme: '#FADFA3',
   loop: 'all',
-  order: 'random',
+  //order: 'random',
   preload: 'auto',
   volume: 0.7,
   mutex: true,
@@ -13,33 +13,9 @@ const ap = new APlayer({
   lrcType: 3,
   audio: [
     {
-      name: 'Marigold feat. Guriri',
-      artist: 'M2U',
-      url: 'https://github.com/yadPe/yadpe.github.io/raw/visualizer/src/assets/marigold.mp3',
-      cover: 'https://github.com/yadPe/yadpe.github.io/blob/visualizer/src/assets/marigold.jpg?raw=true',
-      lrc: '',
-      theme: 'rgb(241, 228, 199)'
-    },
-    {
-      name: 'Before My Body Is Dry (tomatomerde remix)',
-      artist: 'tomatomerde',
-      url: 'https://github.com/yadPe/yadpe.github.io/raw/visualizer/src/assets/Before_my_body_is_dry_(tomatomerde%20remix).mp3',
-      cover: 'https://github.com/yadPe/yadpe.github.io/blob/visualizer/src/assets/Before_my_body_is_dry_(tomatomerde%20remix).jpg?raw=true',
-      lrc: '',
-      theme: 'rgb(233, 192, 215)'
-    },
-    {
-      name: 'illanai-assorted',
-      artist: 't+pazolite',
-      url: 'https://github.com/yadPe/yadpe.github.io/raw/visualizer/src/assets/illanai-assorted.mp3',
-      cover: 'https://github.com/yadPe/yadpe.github.io/blob/visualizer/src/assets/illanai-assorted.jpg?raw=true',
-      lrc: '',
-      theme: 'rgb(233, 192, 215)'
-    },
-    {
       name: 'Alexandrite',
       artist: 'onoken',
-      url: 'https://github.com/yadPe/yadpe.github.io/raw/visualizer/src/assets/alexandrite.mp3',
+      url: 'https://raw.githubusercontent.com/yadPe/yadpe.github.io/visualizer/src/assets/alexandrite.mp3',
       cover: 'https://github.com/yadPe/yadpe.github.io/blob/visualizer/src/assets/alexandrite.jpg?raw=true',
       lrc: '',
       theme: 'rgb(233, 192, 215)'
@@ -47,11 +23,27 @@ const ap = new APlayer({
     {
       name: "World Fragments III",
       artist: 'Xi',
-      url: 'https://github.com/yadPe/yadpe.github.io/raw/visualizer/src/assets/world_fragments_III.mp3',
+      url: 'https://raw.githubusercontent.com/yadPe/yadpe.github.io/visualizer/src/assets/world_fragments_III.mp3',
       cover: 'https://github.com/yadPe/yadpe.github.io/blob/visualizer/src/assets/world_fragments_III.jpg?raw=true',
       lrc: '',
       theme: 'rgb(233, 192, 215)'
-    }
+    },
+    {
+      name: 'Marigold feat. Guriri',
+      artist: 'M2U',
+      url: 'https://raw.githubusercontent.com/yadPe/yadpe.github.io/visualizer/src/assets/marigold.mp3',
+      cover: 'https://github.com/yadPe/yadpe.github.io/blob/visualizer/src/assets/marigold.jpg?raw=true',
+      lrc: '',
+      theme: 'rgb(241, 228, 199)'
+    },
+    {
+      name: 'Before My Body Is Dry (tomatomerde remix)',
+      artist: 'tomatomerde',
+      url: 'https://raw.githubusercontent.com/yadPe/yadpe.github.io/visualizer/src/assets/Before_my_body_is_dry_(tomatomerde%20remix).mp3',
+      cover: 'https://github.com/yadPe/yadpe.github.io/blob/visualizer/src/assets/Before_my_body_is_dry_(tomatomerde%20remix).jpg?raw=true',
+      lrc: '',
+      theme: 'rgb(233, 192, 215)'
+    },
   ]
 });
 
@@ -241,12 +233,14 @@ function mouseIdle(mouse) {
     } else {
       const time = performance.now();
       if (idle && time - startIdle > 3000) {
+        ap.setMode('mini')
         //document.getElementById("controls").style.display = "none";
         //console.log("none");
       }
     }
   } else {
     lastMouseSum = mouse.x + mouse.y;
+    ap.setMode('normal')
     //document.getElementById("controls").style.display = "inline-block";
     idle = false;
   }
